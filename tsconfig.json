@@ -1,17 +1,25 @@
 {
   "extends": "expo/tsconfig.base",
+  // "compilerOptions": {
+  //   "strict": true,
+  //   "paths": {
+  //     "@/*": [
+  //       "./*"
+  //     ]
+  //   }
+  // },
   "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react", // This line specifies JSX support for React
     "strict": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+    "esModuleInterop": true
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "App.tsx", "api/models/user.js", "api/models/todo.js"  ]
 }
+

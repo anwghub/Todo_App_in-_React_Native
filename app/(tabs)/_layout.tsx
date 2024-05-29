@@ -1,35 +1,54 @@
-import { Tabs } from 'expo-router';
 import React from 'react';
+import { Tabs } from 'expo-router';
+import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+export default function Layout() {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
+    <Tabs>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
+          tabBarLabel: 'Home',
+          tabBarLabelStyle: { color: '#7CB9E8' },
+          headerShown: false,
+          tabBarIcon: ({ focused }: { focused: boolean }) =>
+            focused ? (
+              <FontAwesome name="tasks" size={24} color="#7CB9E8" />
+            ) : (
+              <FontAwesome name="tasks" size={24} color="black" />
+            ),
+        }}
+      />    
+
+      <Tabs.Screen
+        name="calendar"
+        options={{
+          tabBarLabel: 'Calendar',
+          tabBarLabelStyle: { color: '#7CB9E8' },
+          headerShown: false,
+          tabBarIcon: ({ focused }: { focused: boolean }) =>
+            focused ? (
+              <AntDesign name="calendar" size={24} color="#7CB9E8" />
+            ) : (
+              <AntDesign name="calendar" size={24} color="black" />
+            ),
         }}
       />
+
       <Tabs.Screen
-        name="explore"
+        name="profile"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
+          tabBarLabel: 'Profile',
+          tabBarLabelStyle: { color: '#7CB9E8' },
+          headerShown: false,
+          tabBarIcon: ({ focused }: { focused: boolean }) =>
+            focused ? (
+              <MaterialCommunityIcons name="account-details" size={24} color="#7CB9E8" />
+            ) : (
+              <MaterialCommunityIcons name="account-details" size={24} color="black" />
+            ),
         }}
       />
     </Tabs>
