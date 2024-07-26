@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const crypto = require("crypto");
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
@@ -14,7 +15,7 @@ app.use(bodyParser.json());
 const jwt = require("jsonwebtoken");
 const moment = require("moment");
 
-mongoose.connect("mongodb+srv://AdminTodo0:AppTodolistapp1234@cluster0.h1wdq8b.mongodb.net/").then(() => {
+mongoose.connect("mongodb+srv://AdminTodo0:"+ process.env.MONGO_PASSWORD +"@cluster0.h1wdq8b.mongodb.net/").then(() => {
     console.log("Connected to MongoDB");
 }).catch((error) => {
     console.log("error connect to mongoDB", error);
